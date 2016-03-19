@@ -43,43 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(app: UIApplication, openURL url: NSURL, options: [String : AnyObject]) -> Bool {
-        
-        let requestToken = BDBOAuth1Credential(queryString: url.query)
-        
-        let twitterClient = BDBOAuth1SessionManager(baseURL: NSURL(string: "https://api.twitter.com")!, consumerKey: "ML785xs8XjZpaj11O4f4F1TE6", consumerSecret: "n49MWCIRLvccFZ2p4r7ljyMtTw3bBiSWnPeO0OOZA3HptuS0kx")
-        
-        twitterClient.fetchAccessTokenWithPath("oauth/access_token", method: "POST", requestToken: requestToken, success: { (accessToken: BDBOAuth1Credential!) -> Void in
-            print ("I got the access token!")
-            
-            twitterClient.GET("1.1/account/verify_credentials.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
-                
-                //print("account: \(response)")
-                let userDictionary = response as! NSDictionary
-                
-                let user = User(dictionary: userDictionary)
-                
-                print ("name : \(user.name!)")
-                
-            }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
-                    
-            })
-            
-            twitterClient.GET("1.1/statuses/home_timeline.json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
-                
-                let dictionaries = response as! [NSDictionary]
-                
-                let tweets = Tweet.tweetWithArray(dictionaries)
-                for tweet in tweets {
-                    print ("\(tweet.text!)")
-                }
-                
-            }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
-                    
-            })
-            
-        }) { (error: NSError!) -> Void in
-            print("error: \(error.localizedDescription)")
-        }
+
+        TwitterClient.sharedInstance.handleOpenUrl(url)
         
         return true
     }
