@@ -19,6 +19,7 @@
 		A4A19FFD1C9DD802003AE326 /* Tweet.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A19FFC1C9DD802003AE326 /* Tweet.swift */; };
 		A4A19FFF1C9DE5E1003AE326 /* TwitterClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A19FFE1C9DE5E1003AE326 /* TwitterClient.swift */; };
 		A4A1A0011C9DF77F003AE326 /* TweetsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A1A0001C9DF77F003AE326 /* TweetsViewController.swift */; };
+		A4A1A0791C9E4CEC003AE326 /* TweetCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A1A0781C9E4CEC003AE326 /* TweetCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		A4A19FFC1C9DD802003AE326 /* Tweet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tweet.swift; sourceTree = "<group>"; };
 		A4A19FFE1C9DE5E1003AE326 /* TwitterClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitterClient.swift; sourceTree = "<group>"; };
 		A4A1A0001C9DF77F003AE326 /* TweetsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetsViewController.swift; sourceTree = "<group>"; };
+		A4A1A0781C9E4CEC003AE326 /* TweetCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TweetCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				A4A19FED1C9B31E1003AE326 /* LoginViewController.swift */,
 				A4A1A0001C9DF77F003AE326 /* TweetsViewController.swift */,
+				A4A1A0781C9E4CEC003AE326 /* TweetCell.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -371,6 +374,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4A19FFB1C9DD7F2003AE326 /* User.swift in Sources */,
+				A4A1A0791C9E4CEC003AE326 /* TweetCell.swift in Sources */,
 				A4A19FFD1C9DD802003AE326 /* Tweet.swift in Sources */,
 				A4A19FEE1C9B31E1003AE326 /* LoginViewController.swift in Sources */,
 				A4A1A0011C9DF77F003AE326 /* TweetsViewController.swift in Sources */,

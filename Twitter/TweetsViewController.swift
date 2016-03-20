@@ -7,23 +7,23 @@
 //
 
 import UIKit
+import AFNetworking
 
-class TweetsViewController: UIViewController {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     var tweets: [Tweet]!
+    var navBarTitle = "Home"
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        TwitterClient.sharedInstance.homeTimeLine({ (tweets: [Tweet]) -> () in
-            self.tweets = tweets
-            
-            for tweet in tweets {
-                print(tweet.text!)
-            }
-        }, failure: { (error: NSError) -> () in
-                print(error.localizedDescription)
-        })
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        requestHomeTimeLine()
+
         
         // Do any additional setup after loading the view.
     }
@@ -36,6 +36,44 @@ class TweetsViewController: UIViewController {
     @IBAction func onLogoutButton(sender: AnyObject) {
         TwitterClient.sharedInstance.logout()
     }
+    
+    
+    // get tweets
+    func requestHomeTimeLine() {
+        
+        TwitterClient.sharedInstance.homeTimeLine({ (tweets: [Tweet]) -> () in
+            self.tweets = tweets
+            
+            for tweet in tweets {
+                print(tweet.text!)
+            }
+            }, failure: { (error: NSError) -> () in
+                print(error.localizedDescription)
+        })
+    }
+    
+    
+    ////////// table //////////
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
+        
+        cell.tweet = tweets[indexPath.row]
+        cell.st = "gggggg"
+        cell.llll.text = "ggggggggg"
+
+        return cell
+    }
+    
+
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let tweets = tweets  {
+            return tweets.count
+        } else {
+            return 0
+        }
+    }
+    
 
     /*
     // MARK: - Navigation
