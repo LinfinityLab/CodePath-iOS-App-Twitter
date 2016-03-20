@@ -12,15 +12,20 @@ import AFNetworking
 class TweetCell: UITableViewCell {
     
     @IBOutlet weak var tweetText: UILabel!
-    @IBOutlet weak var profileButton: UIButton!
-    
-    @IBOutlet weak var llll: UILabel!
-    var st = "g"
+    @IBOutlet weak var profilePhoto: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var screennameLabel: UILabel!
     
     var tweet: Tweet! {
         didSet {
-            tweetText.text = tweet.text as? String
+            tweetText.text = tweet.text
+            usernameLabel.text = tweet.username
+            screennameLabel.text = "@"+tweet.screenname!
             tweetText.sizeToFit()
+            usernameLabel.sizeToFit()
+            profilePhoto.setImageWithURL(tweet.profileImageUrl!)
+            durationLabel.text = tweet.createAt
         }
     }
     
@@ -28,7 +33,6 @@ class TweetCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        llll.text = st
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
