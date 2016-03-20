@@ -32,7 +32,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let logo = UIImage(named: "twitter")
         let imageView = UIImageView(image:logo)
-        self.navigationItem.titleView = imageView
+        navigationItem.titleView = imageView
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -49,6 +49,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             requestHomeTimeLine()
             MBProgressHUD.hideHUDForView(self.view, animated: true)// hide loading state
         } else {
+            navigationItem.titleView = nil
             navigationItem.title = "Disconnected"
         }
         
@@ -104,6 +105,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         if Reachability.isConnectedToNetwork() {
             requestHomeTimeLine()
         } else {
+            navigationItem.titleView = nil
             navigationItem.title = "Disconnected"
         }
         refreshControl.endRefreshing()
