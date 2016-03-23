@@ -27,12 +27,12 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     var tweets: [Tweet]!
     var refreshControl: UIRefreshControl!
     
+    let logo = UIImage(named: "twitter")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let logo = UIImage(named: "twitter")
-        let imageView = UIImageView(image:logo)
-        navigationItem.titleView = imageView
+        navigationItem.titleView = UIImageView(image:logo)
         
         tableView.dataSource = self
         tableView.delegate = self
@@ -101,6 +101,7 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
         if Reachability.isConnectedToNetwork() {
+            navigationItem.titleView = UIImageView(image:logo)
             requestHomeTimeLine()
         } else {
             navigationItem.titleView = nil
