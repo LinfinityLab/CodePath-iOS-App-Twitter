@@ -1,33 +1,30 @@
 //
-//  TweetCell.swift
+//  UserTweetCell.swift
 //  Twitter
 //
-//  Created by Weifan Lin on 3/19/16.
+//  Created by Weifan Lin on 3/25/16.
 //  Copyright © 2016 Weifan Lin. All rights reserved.
 //
 
 import UIKit
-import AFNetworking
 
-class TweetCell: UITableViewCell {
-    
-    @IBOutlet weak var tweetText: UILabel!
-    @IBOutlet weak var profilePhoto: UIImageView!
+class UserTweetCell: UITableViewCell {
+
+    @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var screennameLabel: UILabel!
     
     var tweet: Tweet! {
         didSet {
-            tweetText.text = tweet.text
-            usernameLabel.text = tweet.username
-            screennameLabel.text = "@"+tweet.screenname!
-            tweetText.sizeToFit()
-            usernameLabel.sizeToFit()
-            profilePhoto.setImageWithURL(tweet.profileImageUrl!)
+            tweetLabel.text = tweet.text
+//            usernameLabel.text = tweet.username
+//            screennameLabel.text = "@"+tweet.screenname!
+//            tweetText.sizeToFit()
+//            usernameLabel.sizeToFit()
+//            profilePhoto.setImageWithURL(tweet.profileImageUrl!)
         }
     }
     
-
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

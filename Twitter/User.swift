@@ -10,17 +10,23 @@ import UIKit
 
 class User: NSObject {
 
-    var name: NSString?
-    var screenname: NSString?
+    var name: String!
+    var screenname: String?
     var profileUrl: NSURL?
-    var tagline: NSString?
+    var tagline: String!
     var dictionary: NSDictionary?
+    
+    var followers: Int = 0
+    var following: Int = 0
+    var totalTweets: Int = 0
+    
+    //var tweets = [Tweet]()  trying to get user's tweets but run into some trouble
     
     init(dictionary: NSDictionary) {
         
         self.dictionary = dictionary
         
-        name = dictionary["name"] as? String
+        name = dictionary["name"] as! String
         screenname = dictionary["screenname"] as? String
         
         let profileUrlString = dictionary["profile_image_url_https"] as? String
@@ -28,7 +34,15 @@ class User: NSObject {
             profileUrl = NSURL(string: profileUrlString)
         }
         
-        tagline = dictionary["description"] as? String
+        tagline = dictionary["description"] as! String
+        
+        followers = (dictionary["followers_count"] as? Int) ?? 0
+        
+        following = (dictionary["friends_count"] as? Int) ?? 0
+        
+        totalTweets = (dictionary["statuses_count"] as? Int) ?? 0
+        
+        //tweets = Tweet.tweetWithArray((dictionary["status"] as? [NSDictionary])!)
     }
     
     static let userDidLogoutNotification = "UserDidLogout"

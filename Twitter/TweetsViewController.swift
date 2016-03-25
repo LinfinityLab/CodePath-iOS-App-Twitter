@@ -19,6 +19,8 @@ import MBProgressHUD
 //let month = components.month
 //let day = components.day
 //let hour = components.hour
+//let minute = components.minute
+//let second = components.second
 
 class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -36,20 +38,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
         
         refreshControl = UIRefreshControl()
         refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         refreshControl.addTarget(self, action: "refreshControlAction:", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
         
-        if Reachability.isConnectedToNetwork() {
-            MBProgressHUD.showHUDAddedTo(self.view, animated: true)// show loading state
-            requestHomeTimeLine()
-            MBProgressHUD.hideHUDForView(self.view, animated: true)// hide loading state
-        } else {
-            navigationItem.titleView = nil
-            navigationItem.title = "Disconnected"
-        }
+        refreshControlAction(refreshControl)
         
 
         // Do any additional setup after loading the view.
@@ -128,6 +125,21 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier == "TweetDetailSegue") {
+            
+            let detailTweetViewController = segue.destinationViewController as! DetailTweetViewController
+            let cell = sender as! TweetCell
+            let indexpath = tableView.indexPathForCell(cell)
+            let tweet = tweets[indexpath!.row]
+            
+            detailTweetViewController.tweet = tweet
+            
+        } else if (segue.identifier == "UserDetailSegue") {
+            
+        }
+    }
+    
     /*
     // MARK: - Navigation
 

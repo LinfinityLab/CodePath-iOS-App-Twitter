@@ -91,6 +91,22 @@ class TwitterClient: BDBOAuth1SessionManager {
         })
     }
     
+    func getTweetDetail(success: (Tweet) -> (), failure: (NSError) -> (), tweetID: String) {
+        
+        TwitterClient.sharedInstance.GET("1.1/statuses/show.json?id=\(tweetID)", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            let dictionary = response as! NSDictionary
+            
+            var singleList = [NSDictionary]()
+            singleList.append(dictionary)
+            let tweet = Tweet.tweetWithArray(singleList)[0]
+            
+            success(tweet)
+            
+            }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        })
+    }
+    
     
     func publishTweet(success: (Tweet) -> (), failure: (NSError) -> (), text: String) {
         
@@ -101,5 +117,47 @@ class TwitterClient: BDBOAuth1SessionManager {
             }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
                 failure(error)
         })
+    }
+    
+    func retweetAction(success: (NSDictionary) -> (), failure: (NSError) -> (), tweetID: String) {
+        
+        POST("1.1/statuses/retweet/\(tweetID).json", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            let dictionary = response as! NSDictionary
+            
+            success(dictionary)
+            
+            }) { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        }
+    }
+    
+    func favoriteAction(success: (NSDictionary) -> (), failure: (NSError) -> (), tweetID: String) {
+        
+        POST("1.1/favorites/create.json?id=\(tweetID)", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            let dictionary = response as! NSDictionary
+            success(dictionary)
+            
+            }) { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        }
+    }
+    
+    func getTweetsFromUser(success: ([Tweet]) -> (), failure: (NSError) -> (), screenname: String){
+        TwitterClient.sharedInstance.GET("1.1/statuses/user_timeline.json?\(screenname)", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+            
+            let dictionaries = response as! [NSDictionary]
+            
+//            var singleList = [NSDictionary]()
+//            
+//            singleList.append(dictionary)
+            
+            let tweets = Tweet.tweetWithArray(dictionaries)
+            
+            success(tweets)
+            
+            }, failure: { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+                failure(error)
+        })
+        
     }
 }
