@@ -143,13 +143,9 @@ class TwitterClient: BDBOAuth1SessionManager {
     }
     
     func getTweetsFromUser(success: ([Tweet]) -> (), failure: (NSError) -> (), screenname: String){
-        TwitterClient.sharedInstance.GET("1.1/statuses/user_timeline.json?\(screenname)", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
+        TwitterClient.sharedInstance.GET("1.1/statuses/user_timeline.json?screen_name=\(screenname)", parameters: nil, progress: nil, success: { (task: NSURLSessionDataTask, response: AnyObject?) -> Void in
             
             let dictionaries = response as! [NSDictionary]
-            
-//            var singleList = [NSDictionary]()
-//            
-//            singleList.append(dictionary)
             
             let tweets = Tweet.tweetWithArray(dictionaries)
             

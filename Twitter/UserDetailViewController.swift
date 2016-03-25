@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserDetailViewController: UIViewController {
+class UserDetailViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var screennameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -16,13 +16,6 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var user: User!
-//        {
-//        didSet {
-//            profilePhoto.setImageWithURL(user.profileUrl!)
-//            usernameLabel.text = user.name
-//            screennameLabel.text = user.screenname
-//        }
-//    }
     var userTweets: [Tweet]!
     
     
@@ -30,18 +23,14 @@ class UserDetailViewController: UIViewController {
         super.viewDidLoad()
         
         
-//        tableView.dataSource = self
-//        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.delegate = self
         
         profilePhoto.setImageWithURL(user.profileUrl!)
         usernameLabel.text = user.name
         screennameLabel.text = user.screenname
-//
-        print(user.screenname)
-//        let str: String! = user.screenname!
-//        print(str)
-         //get user's tweets
-        //getUserTweets("\(user.screenname)")
+        
+        getUserTweets(user.screenname!)
         
 
         // Do any additional setup after loading the view.
@@ -52,34 +41,22 @@ class UserDetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-//    func requestUserHomeTimeLine() {
-//        
-//        TwitterClient.sharedInstance.homeTimeLine({ (tweets: [Tweet]) -> () in
-//            self.userTweets = tweets
-//            self.tableView.reloadData()
-//            for tweet in tweets {
-//                print(tweet.text!)
-//            }
-//            }, failure: { (error: NSError) -> () in
-//                print(error.localizedDescription)
-//        })
-//    }
     
     ////////// table \\\\\\\\\\
-//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
-//        
-//        cell.tweet = userTweets[indexPath.row]
-//        return cell
-//    }
-//    
-//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        if let userTweets = userTweets  {
-//            return userTweets.count
-//        } else {
-//            return 0
-//        }
-//    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("UserTweetCell", forIndexPath: indexPath) as! UserTweetCell
+        
+        cell.tweet = userTweets[indexPath.row]
+        return cell
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let userTweets = userTweets  {
+            return userTweets.count
+        } else {
+            return 0
+        }
+    }
     
     
     // get user's tweets
