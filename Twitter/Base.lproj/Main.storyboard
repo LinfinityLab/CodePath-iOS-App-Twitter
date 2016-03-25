@@ -195,6 +195,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="tableView" destination="Yuo-l1-v7y" id="y17-yS-x7v"/>
+                        <segue destination="QHE-Q1-U1G" kind="show" identifier="HomeUserDetailSegue" id="UBx-Ej-AOs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCA-AI-Z7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -307,7 +308,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isk-os-NRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3341" y="1173"/>
+            <point key="canvasLocation" x="2715" y="1223"/>
         </scene>
         <!--User Detail View Controller-->
         <scene sceneID="ovg-mD-eNt">
@@ -378,7 +379,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ki-s4-Yyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3852" y="1173"/>
+            <point key="canvasLocation" x="3297" y="1223"/>
         </scene>
         <!--New Tweet View Controller-->
         <scene sceneID="a59-0y-ao8">
@@ -497,4 +498,7 @@
         <image name="reply-action" width="65" height="72"/>
         <image name="reweet-action" width="75" height="72"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="UBx-Ej-AOs"/>
+    </inferredMetricsTieBreakers>
 </document>

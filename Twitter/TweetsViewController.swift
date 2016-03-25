@@ -22,7 +22,7 @@ import MBProgressHUD
 //let minute = components.minute
 //let second = components.second
 
-class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SegueDetailUserDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
@@ -111,8 +111,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     ////////// table \\\\\\\\\\
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("TweetCell", forIndexPath: indexPath) as! TweetCell
-    
+        
         cell.tweet = tweets[indexPath.row]
+        cell.delegate = self
+    
         return cell
     }
     
@@ -123,6 +125,18 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             return 0
         }
     }
+    
+    func toUserDetailView(cell: TweetCell) {
+        performSegueWithIdentifier("HomeUserDetailSegue", sender: cell)
+    }
+
+    
+    
+//    func imageTapped(img: AnyObject)
+//    {
+//        print("the img from home was tapped")
+//        performSegueWithIdentifier("HomeUserDetailSegue", sender: self)
+//    }
     
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -135,10 +149,20 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             detailTweetViewController.tweet = tweet
             
-        } else if (segue.identifier == "UserDetailSegue") {
+        } else if (segue.identifier == "HomeUserDetailSegue") {
             
+            let userDetailViewController = segue.destinationViewController as! UserDetailViewController
+            let cell = sender as! TweetCell
+            let indexpath = tableView.indexPathForCell(cell)
+            let tweet = tweets[indexpath!.row]
+            
+            userDetailViewController.user = tweet.user
         }
+        
     }
+    
+    
+    
     
     /*
     // MARK: - Navigation
