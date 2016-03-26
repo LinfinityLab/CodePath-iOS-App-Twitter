@@ -36,8 +36,9 @@ class TweetCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
         
-        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
+        let tapGestureRecognizer = UITapGestureRecognizer(target:self, action: Selector("imageTapped"))
         profilePhoto.userInteractionEnabled = true
         profilePhoto.addGestureRecognizer(tapGestureRecognizer)
     }
@@ -52,7 +53,7 @@ class TweetCell: UITableViewCell {
         if self.delegate != nil {
             delegate!.toUserDetailView?(self)
         }
+        
     }
-    
 
 }
