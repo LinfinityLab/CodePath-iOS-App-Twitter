@@ -59,6 +59,8 @@ class DetailTweetViewController: UIViewController {
         retweetCountLabel.text = "\(tweet.retweetCount)"
         favoritesCountLabel.text = "\(tweet.favoritesCount)"
 
+        profilePhoto.layer.cornerRadius = 6
+        profilePhoto.clipsToBounds = true
         
         let tapGestureRecognizer = UITapGestureRecognizer(target:self, action:Selector("imageTapped:"))
         profilePhoto.userInteractionEnabled = true

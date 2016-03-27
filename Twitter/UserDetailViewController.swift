@@ -14,6 +14,9 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var userBackgroundImg: UIView!
+    @IBOutlet weak var followingCountLabel: UILabel!
+    @IBOutlet weak var followerCountLabel: UILabel!
     
     var user: User!
     var userTweets: [Tweet]!
@@ -22,11 +25,21 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        // make nav bar completely translucent
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), forBarMetrics: UIBarMetrics.Default)
+        navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.translucent = true
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+
         tableView.dataSource = self
         tableView.delegate = self
         
         profilePhoto.setImageWithURL(user.profileUrl!)
+        profilePhoto.layer.cornerRadius = 6
+        profilePhoto.clipsToBounds = true
+        profilePhoto.layer.borderWidth = 3
+        profilePhoto.layer.borderColor = UIColor.whiteColor().CGColor
+        
         usernameLabel.text = user.name
         screennameLabel.text = user.screenname
         

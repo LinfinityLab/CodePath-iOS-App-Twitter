@@ -10,6 +10,7 @@ import UIKit
 
 class UserTweetCell: UITableViewCell {
 
+    @IBOutlet weak var profilePhoto: UIImageView!
     @IBOutlet weak var tweetLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var screennameLabel: UILabel!
@@ -21,13 +22,16 @@ class UserTweetCell: UITableViewCell {
 //            screennameLabel.text = "@"+tweet.screenname!
 //            tweetText.sizeToFit()
 //            usernameLabel.sizeToFit()
-//            profilePhoto.setImageWithURL(tweet.profileImageUrl!)
+            profilePhoto.setImageWithURL(tweet.user.profileUrl!)
         }
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        profilePhoto.layer.cornerRadius = 6
+        profilePhoto.clipsToBounds = true
     }
 
     override func setSelected(selected: Bool, animated: Bool) {
