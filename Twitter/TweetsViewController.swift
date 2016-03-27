@@ -157,6 +157,10 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
     }
     
+// dont use this for now
+//    override func viewDidAppear(animated: Bool) {
+//        requestHomeTimeLine()
+//    }
     
     
     

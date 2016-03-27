@@ -28,6 +28,8 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 120
         
         profilePhoto.setImageWithURL(currentUser.profileUrl!)
         profilePhoto.layer.cornerRadius = 6
@@ -76,6 +78,10 @@ class MeViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             }, failure: { (error: NSError) -> () in
                 print(error.localizedDescription)
             }, screenname: screenname)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        getUserTweets(currentUser.screenname!)
     }
 
     /*
