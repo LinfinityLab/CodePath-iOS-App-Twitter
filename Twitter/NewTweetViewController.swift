@@ -37,7 +37,8 @@ class NewTweetViewController: UIViewController, UITextViewDelegate {
     }
     
     @IBAction func cancel(sender: AnyObject) {
-        self.performSegueWithIdentifier("FinishTweet", sender: sender)
+        
+        dismissViewControllerAnimated(true, completion: nil)
     }
 
     @IBAction func sendTweet(sender: AnyObject) {

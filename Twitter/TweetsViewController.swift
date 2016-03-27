@@ -131,13 +131,6 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
     }
 
     
-    
-//    func imageTapped(img: AnyObject)
-//    {
-//        print("the img from home was tapped")
-//        performSegueWithIdentifier("HomeUserDetailSegue", sender: self)
-//    }
-    
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "TweetDetailSegue") {

@@ -96,7 +96,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="me" id="X2t-94-K5D"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="me" id="X2t-94-K5D">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.0" green="0.51428782939910889" blue="0.71407723426818848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MCW-ye-pry" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -188,7 +194,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="New" id="RZr-XG-afi">
                             <connections>
-                                <segue destination="pcI-rB-9Gu" kind="show" identifier="newTweetSegue" id="fSR-7p-b3H"/>
+                                <segue destination="FmT-Dj-uOo" kind="show" id="0Lf-eA-K1A"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -357,7 +363,9 @@
                             <constraint firstItem="7Bo-Rz-Qih" firstAttribute="leading" secondItem="HQR-dg-pNq" secondAttribute="trailing" constant="8" id="zab-8S-jW0"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Tweet" id="twU-HZ-VTB"/>
+                    <navigationItem key="navigationItem" title="Tweet" id="twU-HZ-VTB">
+                        <barButtonItem key="backBarButtonItem" title="back" id="aqn-Tw-qxV"/>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="favoriteButton" destination="MMf-Om-3YA" id="tVL-bw-tXt"/>
@@ -573,7 +581,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3827" y="325"/>
+            <point key="canvasLocation" x="4064" y="325"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="d4K-8a-EUU">
@@ -598,7 +606,13 @@
         <scene sceneID="Sdp-Tw-FJb">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="r19-59-mTy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Home" image="home" id="TM2-9O-AQe"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="home" id="TM2-9O-AQe">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.0" green="0.51428782939910889" blue="0.71407723426818848" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="aXj-Gn-Dmq">
@@ -615,23 +629,23 @@
             <point key="canvasLocation" x="2089" y="325"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="LcQ-2E-yrX">
+        <scene sceneID="ucA-Fu-v3L">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="pcI-rB-9Gu" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FmT-Dj-uOo" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xIc-gp-ZoF">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="f8E-vC-3TF">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="LMr-no-3iJ" kind="relationship" relationship="rootViewController" id="VjA-wy-ZY5"/>
+                        <segue destination="LMr-no-3iJ" kind="relationship" relationship="rootViewController" id="3eE-Sx-2i8"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jlm-R5-ZMK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ILt-RH-WuH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3297" y="325"/>
+            <point key="canvasLocation" x="3252" y="325"/>
         </scene>
     </scenes>
     <resources>
