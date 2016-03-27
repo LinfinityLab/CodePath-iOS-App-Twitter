@@ -42,6 +42,8 @@ class UserDetailViewController: UIViewController, UITableViewDelegate, UITableVi
         
         usernameLabel.text = user.name
         screennameLabel.text = user.screenname
+        followerCountLabel.text = String(user.followers)
+        followingCountLabel.text = String(user.following)
         
         getUserTweets(user.screenname!)
         

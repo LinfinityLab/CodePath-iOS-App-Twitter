@@ -77,6 +77,7 @@ class DetailTweetViewController: UIViewController {
     @IBAction func retweet(sender: AnyObject) {
 
         if (!tweet.isRetweeted) {
+            tweet.isRetweeted = true
             retweetButton.setImage(retweetedImage, forState: .Normal)
             
             TwitterClient.sharedInstance.retweetAction({ (tweet) -> () in
@@ -84,8 +85,9 @@ class DetailTweetViewController: UIViewController {
                 }, failure: { (error: NSError) -> () in
                     print(error)
                 }, tweetID: tweet.tweetID)
+            retweetCountLabel.text = "\(tweet.retweetCount+1)"
         } else {
-            // unretweeted
+            // unretweet
         }
 
     }
@@ -93,6 +95,7 @@ class DetailTweetViewController: UIViewController {
     @IBAction func favorite(sender: AnyObject) {
         
         if (!tweet.isFavorited) {
+            tweet.isFavorited = true
             favoriteButton.setImage(favedImage, forState: .Normal)
             
             TwitterClient.sharedInstance.favoriteAction({ (tweet) -> () in
@@ -100,6 +103,7 @@ class DetailTweetViewController: UIViewController {
                 }, failure: { (error: NSError) -> () in
                     print(error)
                 }, tweetID: tweet.tweetID)
+            favoritesCountLabel.text = "\(tweet.favoritesCount+1)"
         } else {
             // unfavorite
         }
