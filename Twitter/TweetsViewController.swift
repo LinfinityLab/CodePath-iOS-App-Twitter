@@ -144,12 +144,15 @@ class TweetsViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
         } else if (segue.identifier == "HomeUserDetailSegue") {
             
-            let userDetailViewController = segue.destinationViewController as! UserDetailViewController
+            let destinationNavigationController = segue.destinationViewController as! UINavigationController
+            let userDetailViewController = destinationNavigationController.topViewController as! UserDetailViewController
+            
             let cell = sender as! TweetCell
             let indexpath = tableView.indexPathForCell(cell)
             let tweet = tweets[indexpath!.row]
             
             userDetailViewController.user = tweet.user
+            
         }
         
     }

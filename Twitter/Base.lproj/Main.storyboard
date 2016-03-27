@@ -201,7 +201,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="tableView" destination="Yuo-l1-v7y" id="y17-yS-x7v"/>
-                        <segue destination="QHE-Q1-U1G" kind="show" identifier="HomeUserDetailSegue" id="UBx-Ej-AOs"/>
+                        <segue destination="KD3-bD-98e" kind="show" identifier="HomeUserDetailSegue" id="UBx-Ej-AOs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PCA-AI-Z7a" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -377,7 +377,7 @@
                         <outlet property="timestampLabel" destination="K9P-X7-smi" id="nuc-yL-QSz"/>
                         <outlet property="tweetTextLabel" destination="ohQ-lG-me0" id="A56-3u-bN9"/>
                         <outlet property="usernameLabel" destination="KRx-eB-2dQ" id="rX6-3f-bnQ"/>
-                        <segue destination="QHE-Q1-U1G" kind="show" identifier="UserDetailSegue" id="cRr-oN-Jkb"/>
+                        <segue destination="KD3-bD-98e" kind="show" identifier="UserDetailSegue" id="cRr-oN-Jkb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Isk-os-NRx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -409,7 +409,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="83" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ts6-Lu-8Xm">
-                                <rect key="frame" x="0.0" y="276" width="414" height="411"/>
+                                <rect key="frame" x="0.0" y="276" width="414" height="460"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="UserTweetCell" rowHeight="83" id="Ctf-LU-RG9" customClass="UserTweetCell" customModule="Twitter" customModuleProvider="target">
@@ -517,6 +517,14 @@
                             <constraint firstItem="OUt-EP-Kme" firstAttribute="leading" secondItem="Pg8-C9-Yfr" secondAttribute="leading" constant="8" id="vJ4-5Z-Sge"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Asv-zA-GbA">
+                        <barButtonItem key="leftBarButtonItem" image="go-back" id="GN4-xr-4rg">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="goBack:" destination="QHE-Q1-U1G" id="aNj-S9-c0X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
                     <connections>
                         <outlet property="followerCountLabel" destination="sVc-rM-CdI" id="SK8-T8-wXU"/>
@@ -530,7 +538,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0ki-s4-Yyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3297" y="1223"/>
+            <point key="canvasLocation" x="3923" y="1223"/>
         </scene>
         <!--New Tweet View Controller-->
         <scene sceneID="a59-0y-ao8">
@@ -647,8 +655,27 @@
             </objects>
             <point key="canvasLocation" x="3252" y="325"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TKn-gb-6Fi">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="KD3-bD-98e" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="bgz-Dd-nEP">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="QHE-Q1-U1G" kind="relationship" relationship="rootViewController" id="6r8-LC-6Oa"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7iB-Jx-y6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3297" y="1223"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="go-back" width="25" height="25"/>
         <image name="home" width="25" height="25"/>
         <image name="like-action" width="54" height="72"/>
         <image name="me" width="25" height="25"/>

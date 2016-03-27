@@ -126,7 +126,11 @@ class DetailTweetViewController: UIViewController {
        
         if (segue.identifier == "UserDetailSegue") {
             
-            let userDetailViewController = segue.destinationViewController as! UserDetailViewController
+            //let userDetailViewController = segue.destinationViewController as! UserDetailViewController
+            
+            let destinationNavigationController = segue.destinationViewController as! UINavigationController
+            let userDetailViewController = destinationNavigationController.topViewController as! UserDetailViewController
+            
             userDetailViewController.user = tweet.user
         }
     }
